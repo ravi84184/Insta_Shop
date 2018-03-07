@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ravi.com.instashop.SplashScreenActivity"
+    android:background="@android:color/holo_red_dark"
+    android:weightSum="4">
+
+    <ImageView
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_weight="2"
+        android:src="@drawable/logo_white"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="0dp" />
+
+    <TextView
+        android:gravity="center"
+        android:layout_weight="1"
+        android:textSize="@dimen/_20ssp"
+        android:layout_gravity="center"
+        android:text="Your neighbourhood store!"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_weight="1"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/spin_kit"
+        style="@style/SpinKitView.Large.Wave"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        app:SpinKit_Color="@color/white" />
+    <TextView
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:textSize="@dimen/_20ssp"
+        android:layout_gravity="center"
+        android:text="Powered By InstaShop"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"/>
+
+</LinearLayout>
