@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ravi.com.instashop.IntroFragment2"
+    tools:context="ravi.com.instashop.fragment.IntroFragment2"
     android:background="@color/colorPrimary">
 
 

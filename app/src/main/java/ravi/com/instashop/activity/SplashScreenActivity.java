@@ -1,4 +1,4 @@
-package ravi.com.instashop;
+package ravi.com.instashop.activity;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import ravi.com.instashop.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private Handler mHandler = new Handler();

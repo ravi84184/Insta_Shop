@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ravi.com.instashop.SplashScreenActivity"
+    tools:context="ravi.com.instashop.activity.SplashScreenActivity"
     android:background="@color/colorPrimary"
     android:weightSum="4">
 

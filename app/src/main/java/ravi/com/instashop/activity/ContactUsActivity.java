@@ -1,10 +1,12 @@
-package ravi.com.instashop;
+package ravi.com.instashop.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import ravi.com.instashop.R;
 
 public class ContactUsActivity extends AppCompatActivity {
 

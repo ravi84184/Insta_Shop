@@ -1,21 +1,20 @@
-package ravi.com.instashop;
+package ravi.com.instashop.activity;
 
-import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import butterknife.BindAnim;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import ravi.com.instashop.fragment.IntroFragment1;
+import ravi.com.instashop.fragment.IntroFragment2;
+import ravi.com.instashop.R;
 
 public class IntroActivity extends AppCompatActivity implements Animation.AnimationListener{
 
