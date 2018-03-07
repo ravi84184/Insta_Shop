@@ -1,9 +1,11 @@
 package ravi.com.instashop;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private Handler mHandler = new Handler();
@@ -14,6 +16,9 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        TextView tx = (TextView)findViewById(R.id.textview);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/style.otf");
+        tx.setTypeface(custom_font);
         mHandler.postDelayed(mRunnable = new Runnable() {
             @Override
             public void run() {
