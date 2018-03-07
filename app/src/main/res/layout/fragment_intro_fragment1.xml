@@ -1,0 +1,46 @@
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ravi.com.instashop.IntroFragment1"
+    android:background="@color/colorPrimary">
+
+
+    <TextView
+        android:layout_marginTop="@dimen/_20sdp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="@color/white"
+        android:text="Welcome to InstaShop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:src="@drawable/logo_white"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_height="@dimen/_100sdp" />
+
+    <TextView
+        android:padding="@dimen/_30sdp"
+        android:gravity="center"
+        android:textSize="@dimen/_18ssp"
+        android:textColor="@color/white"
+        android:text="InstaShop uses location services in order to determine proximity of listed businesses and only while you are using the application. "
+        android:ems="10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <!--<Button-->
+        <!--android:id="@+id/btn_next"-->
+        <!--android:background="@drawable/btn_bg_curved"-->
+        <!--android:text="next"-->
+        <!--android:textColor="@color/white"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="@dimen/_150sdp"-->
+        <!--android:layout_height="@dimen/_30sdp" />-->
+
+</LinearLayout>
