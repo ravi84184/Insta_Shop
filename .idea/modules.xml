@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/InstaShop.iml" filepath="$PROJECT_DIR$/InstaShop.iml" />
       <module fileurl="file://D:\Work\InstaShop\Insta_Shop\InstaShop.iml" filepath="D:\Work\InstaShop\Insta_Shop\InstaShop.iml" />
       <module fileurl="file://$PROJECT_DIR$/Insta_Shop.iml" filepath="$PROJECT_DIR$/Insta_Shop.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
