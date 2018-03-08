@@ -24,7 +24,7 @@ import ravi.com.instashop.viewholder.SubCategoryViewHolder;
  * Created by nikpatel on 07/03/18.
  */
 
-public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHolder>{
+public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHolder> {
     private static final String TAG = "SubCategoryAdapter";
     Context mContext;
     List<PopularModel> list;
@@ -38,7 +38,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
 
     @Override
     public SubCategoryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_sub_cat_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_sub_cat_item, parent, false);
         return new SubCategoryViewHolder(view);
     }
 
@@ -50,41 +50,41 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
         Picasso.with(mContext).load(model.getImg()).into(holder.p_image);
         item_number_select.add(0);
 
-        Log.e(TAG, "onBindViewHolder: " +item_number_select.toString() );
+        Log.e(TAG, "onBindViewHolder: " + item_number_select.toString());
 
         holder.p_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 int i = item_number_select.get(position);
-                if (i <= 0){
-                    Log.e(TAG, "onClick: btn_add  if " );
+                if (i <= 0) {
+                    Log.e(TAG, "onClick: btn_add  if ");
                     holder.rel_add_remove.setVisibility(View.VISIBLE);
                     i++;
-                    holder.add_item.setText("+"+1);
-                    item_number_select.set(position,i);
+                    holder.add_item.setText("+" + 1);
+                    item_number_select.set(position, i);
                 } else {
                     i++;
-                    item_number_select.set(position,i);
-                    holder.add_item.setText("+"+i);
+                    item_number_select.set(position, i);
+                    holder.add_item.setText("+" + i);
                 }
             }
         });
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: btn_add" );
+                Log.e(TAG, "onClick: btn_add");
                 int i = item_number_select.get(position);
-                if (i <= 0){
-                    Log.e(TAG, "onClick: btn_add  if " );
+                if (i <= 0) {
+                    Log.e(TAG, "onClick: btn_add  if ");
                     holder.rel_add_remove.setVisibility(View.VISIBLE);
                     i++;
-                    holder.add_item.setText("+"+1);
-                    item_number_select.set(position,i);
+                    holder.add_item.setText("+" + 1);
+                    item_number_select.set(position, i);
                 } else {
                     i++;
-                    item_number_select.set(position,i);
-                    holder.add_item.setText("+"+i);
+                    item_number_select.set(position, i);
+                    holder.add_item.setText("+" + i);
                 }
             }
         });
@@ -92,24 +92,24 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
             @Override
             public void onClick(View v) {
                 int i = item_number_select.get(position);
-                Log.e(TAG, "onClick: add_item" );
+                Log.e(TAG, "onClick: add_item");
                 i++;
-                item_number_select.set(position,i);
-                holder.add_item.setText("+"+i);
+                item_number_select.set(position, i);
+                holder.add_item.setText("+" + i);
             }
         });
         holder.remove_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: remove_item" );
+                Log.e(TAG, "onClick: remove_item");
                 int i = item_number_select.get(position);
                 i--;
-                if (i <= 0){
-                    item_number_select.set(position,0);
+                if (i <= 0) {
+                    item_number_select.set(position, 0);
                     holder.rel_add_remove.setVisibility(View.INVISIBLE);
                 } else {
-                    holder.add_item.setText("+"+i);
-                    item_number_select.set(position,i);
+                    holder.add_item.setText("+" + i);
+                    item_number_select.set(position, i);
                 }
             }
         });

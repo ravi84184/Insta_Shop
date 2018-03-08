@@ -15,6 +15,7 @@ import ravi.com.instashop.R;
 import ravi.com.instashop.activity.SubcatActivity;
 import ravi.com.instashop.interfaces.ItemClickListener;
 import ravi.com.instashop.model.PopularModel;
+import ravi.com.instashop.model.catModel;
 import ravi.com.instashop.viewholder.CategoryViewHolder;
 import ravi.com.instashop.viewholder.PopularViewHolder;
 
@@ -24,8 +25,8 @@ import ravi.com.instashop.viewholder.PopularViewHolder;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
     Context mContext;
-    List<PopularModel> list;
-    public CategoryAdapter(Context mContext, List<PopularModel> list) {
+    List<catModel> list;
+    public CategoryAdapter(Context mContext, List<catModel> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -38,18 +39,18 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
 
     @Override
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
-        final PopularModel model = (PopularModel) list.get(position);
+        final catModel model = (catModel) list.get(position);
 
-        holder.p_name.setText(model.getLan());
-        Picasso.with(mContext).load(model.getImg()).into(holder.p_image);
+        holder.p_name.setText(model.getCategory_name());
+        Picasso.with(mContext).load(model.getCategory_photo()).into(holder.p_image);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
                 if (isLongClick){
-                    mContext.startActivity(new Intent(mContext, SubcatActivity.class));
+                    mContext.startActivity(new Intent(mContext, SubcatActivity.class).putExtra("CAT_ID",model.getCategory_id()));
                 } else {
-                    mContext.startActivity(new Intent(mContext, SubcatActivity.class));
+                    mContext.startActivity(new Intent(mContext, SubcatActivity.class).putExtra("CAT_ID",model.getCategory_id()));
                 }
             }
         });

@@ -43,21 +43,17 @@ public class AllSubCatFragment extends Fragment {
     }
 
     private void init(View view) {
-
         for (int j = 0; j<5; j++){
             for (int i =0; i<lan.length ; i++){
                 PopularModel items = new PopularModel(lan[i],image[i]);
                 listItemsHorizontal.add(items);
             }
         }
-
         sub_cat_list = view.findViewById(R.id.sub_cat_list);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         sub_cat_list.setLayoutManager(gridLayoutManager);
         sub_cat_list.setItemAnimator(new DefaultItemAnimator());
         sub_cat_list.setAdapter(subCategoryAdapter = new SubCategoryAdapter(getContext(),listItemsHorizontal));
 
-
     }
-
 }

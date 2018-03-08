@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,17 +28,24 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import ravi.com.instashop.ApiManager.ApiClient;
+import ravi.com.instashop.ApiResponse.categoryResponse;
 import ravi.com.instashop.R;
 import ravi.com.instashop.adapter.CategoryAdapter;
 import ravi.com.instashop.adapter.PopularAdapter;
 import ravi.com.instashop.adapter.ViewPagerAdapter;
+import ravi.com.instashop.interfaces.ApiInterface;
 import ravi.com.instashop.model.PopularModel;
+import ravi.com.instashop.model.catModel;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
-    List<PopularModel> listItemsHorizontal,listCategory;
+    List<PopularModel> listItemsHorizontal;
     public static final String[] lan = new String[]{"Android 1","Android 2","Android 3","Android 4"};
     public static final Integer[] image = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
 
@@ -69,14 +77,7 @@ public class MainActivity extends AppCompatActivity
 
 
         listItemsHorizontal = new ArrayList<PopularModel>();
-        listCategory = new ArrayList<PopularModel>();
 
-        for (int j = 0; j<2; j++){
-            for (int i =0; i<lan.length ; i++){
-                PopularModel items = new PopularModel(lan[i],image[i]);
-                listCategory.add(items);
-            }
-        }
         for (int i =0; i<lan.length ; i++){
             PopularModel items = new PopularModel(lan[i],image[i]);
             listItemsHorizontal.add(items);
@@ -89,9 +90,9 @@ public class MainActivity extends AppCompatActivity
         recycleCategory = findViewById(R.id.recycleCategory);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recycleCategory.setLayoutManager(linearLayoutManager);
-        recycleCategory.setAdapter(categoryAdapter = new CategoryAdapter(this,listCategory));
 
         slider();
+        catLoad();
 
     }
 
@@ -167,6 +168,31 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+    private void catLoad() {
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<categoryResponse> call = apiService.category("categories");
+        call.enqueue(new Callback<categoryResponse>() {
+            @Override
+            public void onResponse(Call<categoryResponse> call, Response<categoryResponse> response) {
+                if (response.body().getStatus() == 200) {
+
+
+                    List<catModel> cat = response.body().getCategories();
+
+                    recycleCategory.setAdapter(new CategoryAdapter(MainActivity.this,cat));
+
+
+                } else {
+
+                }
+            }
+            @Override
+            public void onFailure(Call<categoryResponse> call, Throwable t) {
+                // Log error here since request failed
+                Log.e(TAG, "Error" + t.toString());
+            }
+        });
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
