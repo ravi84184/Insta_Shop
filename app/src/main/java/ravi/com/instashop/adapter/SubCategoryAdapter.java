@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ravi.com.instashop.R;
+import ravi.com.instashop.activity.SubcatActivity;
 import ravi.com.instashop.interfaces.ItemClickListener;
 import ravi.com.instashop.model.PopularModel;
 import ravi.com.instashop.viewholder.CategoryViewHolder;
@@ -29,7 +30,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     List<PopularModel> list;
     List<Integer> item_number_select = new ArrayList<>();
 
-    int selected_no =0;
 
     public SubCategoryAdapter(Context mContext, List<PopularModel> list) {
         this.mContext = mContext;
@@ -45,10 +45,12 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     @Override
     public void onBindViewHolder(final SubCategoryViewHolder holder, final int position) {
         final PopularModel model = (PopularModel) list.get(position);
+        final SubcatActivity cart_show = new SubcatActivity();
         holder.p_name.setText(model.getLan());
         Picasso.with(mContext).load(model.getImg()).into(holder.p_image);
         item_number_select.add(0);
 
+        Log.e(TAG, "onBindViewHolder: " +item_number_select.toString() );
 
         holder.p_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +110,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
                 } else {
                     holder.add_item.setText("+"+i);
                     item_number_select.set(position,i);
-
                 }
             }
         });

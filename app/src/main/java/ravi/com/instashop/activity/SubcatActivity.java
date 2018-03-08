@@ -1,5 +1,6 @@
 package ravi.com.instashop.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +26,15 @@ public class SubcatActivity extends AppCompatActivity implements TabLayout.OnTab
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
-
+    private static final String TAG = "SubcatActivity";
+    LinearLayout cart_show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subcat);
+
+        cart_show = (LinearLayout) findViewById(R.id.cart_show);
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
@@ -44,6 +51,12 @@ public class SubcatActivity extends AppCompatActivity implements TabLayout.OnTab
         viewPager.setAdapter(adapter);
         tabLayout.setOnTabSelectedListener(this);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        cart_show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SubcatActivity.this,MyorderActivity.class));
+            }
+        });
     }
 
     @Override
@@ -60,4 +73,5 @@ public class SubcatActivity extends AppCompatActivity implements TabLayout.OnTab
     public void onTabReselected(TabLayout.Tab tab) {
 
     }
+
 }

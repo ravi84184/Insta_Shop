@@ -22,6 +22,7 @@
 
 
     <LinearLayout
+        android:id="@+id/cart_show"
         android:weightSum="3"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
