@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity
 
     List<PopularModel> listItemsHorizontal,listCategory;
 
+
     public static final String[] lan = new String[]{"Android 1","Android 2","Android 3","Android 4"};
     public static final Integer[] image = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
 
