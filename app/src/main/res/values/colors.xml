@@ -13,6 +13,10 @@
     <color name="tranparant">#5c000000</color>
     <color name="dark">#ddf5f3f7</color>
 
+    <color name="grey_trans">#c3dfdddd</color>
+    <color name="grey_trans_too">#96dedddd</color>
+
     <color name="green">#00c123</color>
+    <color name="green_dark">#27a33d</color>
 
 </resources>

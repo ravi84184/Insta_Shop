@@ -104,7 +104,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
                 i--;
                 if (i <= 0){
                     item_number_select.set(position,0);
-                    holder.rel_add_remove.setVisibility(View.GONE);
+                    holder.rel_add_remove.setVisibility(View.INVISIBLE);
                 } else {
                     holder.add_item.setText("+"+i);
                     item_number_select.set(position,i);
