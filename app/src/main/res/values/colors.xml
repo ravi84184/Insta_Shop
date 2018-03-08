@@ -10,6 +10,8 @@
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="tranparant">#5c000000</color>
+    <color name="dark">#ddf5f3f7</color>
 
 
 </resources>

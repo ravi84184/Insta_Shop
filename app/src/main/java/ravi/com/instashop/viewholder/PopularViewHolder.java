@@ -23,8 +23,8 @@ public class PopularViewHolder extends RecyclerView.ViewHolder implements View.O
         p_name = itemView.findViewById(R.id.p_name);
         p_image = itemView.findViewById(R.id.p_image);
 
-        itemView.setOnClickListener(this);
-        itemView.setOnLongClickListener(this);
+        //itemView.setOnClickListener(this);
+        //itemView.setOnLongClickListener(this);
     }
 
     void setItemClickListener(ItemClickListener itemClickListener){

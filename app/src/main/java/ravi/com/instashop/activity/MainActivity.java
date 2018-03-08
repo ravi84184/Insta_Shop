@@ -1,5 +1,6 @@
 package ravi.com.instashop.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity
     List<PopularModel> listItemsHorizontal,listCategory;
 
     public static final String[] lan = new String[]{"Android 1","Android 2","Android 3","Android 4"};
-    public static final Integer[] image = {R.drawable.product_1,R.drawable.product_2,R.drawable.product_3,R.drawable.product_4};
+    public static final Integer[] image = {R.drawable.p1,R.drawable.p2,R.drawable.p3,R.drawable.p4};
 
     PopularAdapter listViewAdapter;
     private ViewPager viewPager;
@@ -205,18 +206,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_home) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_account) {
+            startActivity(new Intent(MainActivity.this, MyAccount.class));
+        } else if (id == R.id.nav_suggest_product) {
+            startActivity(new Intent(MainActivity.this, SuggestProductActivity.class));
 
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_order) {
+            startActivity(new Intent(MainActivity.this, MainActivity.class));
+        }
+        else if (id == R.id.nav_contact) {
+            startActivity(new Intent(MainActivity.this, ContactUsActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
