@@ -8,22 +8,33 @@
     android:layout_height="match_parent"
     tools:context="ravi.com.instashop.activity.IntroActivity"
     android:background="@color/colorPrimary"
-    android:weightSum="3">
+    >
 
-    <FrameLayout
-        android:layout_weight="2"
-        android:id="@+id/frameLayout"
+    <LinearLayout
+        android:gravity="center"
+        android:weightSum="3"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        />
-    <Button
-        android:layout_marginTop="@dimen/_10sdp"
-        android:id="@+id/btn_next"
-        android:background="@drawable/btn_bg_curved"
-        android:text="next"
-        android:onClick="nextfragment"
-        android:textColor="@color/white"
-        android:layout_gravity="center"
-        android:layout_width="@dimen/_150sdp"
-        android:layout_height="@dimen/_30sdp" />
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            />
+        <Button
+            android:layout_marginTop="@dimen/_10sdp"
+            android:id="@+id/btn_next"
+            android:background="@drawable/btn_bg_curved"
+            android:text="next"
+            android:onClick="nextfragment"
+            android:textColor="@color/white"
+            android:layout_gravity="center"
+            android:layout_width="@dimen/_150sdp"
+            android:layout_height="@dimen/_30sdp" />
+
+    </LinearLayout>
+
 </LinearLayout>

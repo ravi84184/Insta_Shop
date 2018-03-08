@@ -40,7 +40,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.IntroActivity"
-            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
+            android:name=".activity.IntroActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity android:name=".activity.SubcatActivity"></activity>
     </application>
 </manifest>

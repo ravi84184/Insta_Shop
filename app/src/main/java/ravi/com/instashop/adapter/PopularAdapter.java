@@ -21,32 +21,22 @@ import ravi.com.instashop.viewholder.PopularViewHolder;
 public class PopularAdapter extends RecyclerView.Adapter<PopularViewHolder>{
     Context mContext;
     List<PopularModel> list;
-    int i;
-    public PopularAdapter(Context mContext, List<PopularModel> list,int i) {
+    public PopularAdapter(Context mContext, List<PopularModel> list) {
         this.mContext = mContext;
         this.list = list;
-        this.i = i;
     }
 
     @Override
     public PopularViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view;
-        if (i == 1){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_popular_view,parent,false);
-
-        } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_category_view,parent,false);
-        }
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.raw_popular_view,parent,false);
         return new PopularViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(PopularViewHolder holder, int position) {
         final PopularModel model = (PopularModel) list.get(position);
-
         holder.p_name.setText(model.getLan());
         Picasso.with(mContext).load(model.getImg()).into(holder.p_image);
-
     }
 
     @Override

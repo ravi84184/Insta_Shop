@@ -28,6 +28,7 @@ import java.util.TimerTask;
 
 import butterknife.BindView;
 import ravi.com.instashop.R;
+import ravi.com.instashop.adapter.CategoryAdapter;
 import ravi.com.instashop.adapter.PopularAdapter;
 import ravi.com.instashop.adapter.ViewPagerAdapter;
 import ravi.com.instashop.model.PopularModel;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity
     private int dotscount;
     private ImageView[] dots;
     RecyclerView recycleHorizontal,recycleCategory;
+    CategoryAdapter categoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,13 +95,13 @@ public class MainActivity extends AppCompatActivity
         }
         recycleHorizontal = findViewById(R.id.recycleHorizontal);
         recycleHorizontal.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        recycleHorizontal.setAdapter(listViewAdapter = new PopularAdapter(this,listItemsHorizontal,1));
+        recycleHorizontal.setAdapter(listViewAdapter = new PopularAdapter(this,listItemsHorizontal));
 
 
         recycleCategory = findViewById(R.id.recycleCategory);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recycleCategory.setLayoutManager(linearLayoutManager);
-        recycleCategory.setAdapter(listViewAdapter = new PopularAdapter(this,listCategory,2));
+        recycleCategory.setAdapter(categoryAdapter = new CategoryAdapter(this,listCategory));
 
         slider();
 
