@@ -1,5 +1,6 @@
 package ravi.com.instashop.activity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity
     RecyclerView recycleHorizontal,recycleCategory;
     CategoryAdapter categoryAdapter;
 
+    ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +77,8 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Please Wait..");
 
         listItemsHorizontal = new ArrayList<PopularModel>();
 
@@ -94,7 +98,6 @@ public class MainActivity extends AppCompatActivity
 
         slider();
         catLoad();
-
     }
 
     private void slider() {
@@ -171,13 +174,15 @@ public class MainActivity extends AppCompatActivity
         }
     }
     private void catLoad() {
+        progressDialog.show();
+
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<categoryResponse> call = apiService.category("categories");
         call.enqueue(new Callback<categoryResponse>() {
             @Override
             public void onResponse(Call<categoryResponse> call, Response<categoryResponse> response) {
                 if (response.body().getStatus() == 200) {
-
+                    progressDialog.dismiss();
 
                     List<catModel> cat = response.body().getCategories();
 
@@ -185,6 +190,7 @@ public class MainActivity extends AppCompatActivity
 
 
                 } else {
+                    progressDialog.dismiss();
 
                 }
             }
@@ -192,6 +198,9 @@ public class MainActivity extends AppCompatActivity
             public void onFailure(Call<categoryResponse> call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, "Error" + t.toString());
+
+                progressDialog.dismiss();
+
             }
         });
     }

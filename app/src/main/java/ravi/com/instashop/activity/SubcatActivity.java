@@ -7,10 +7,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -21,16 +17,10 @@ import java.util.List;
 import ravi.com.instashop.ApiManager.ApiClient;
 import ravi.com.instashop.ApiResponse.subcategoryResponse;
 import ravi.com.instashop.FragmentChild;
-import ravi.com.instashop.FragmentParent;
 import ravi.com.instashop.R;
 import ravi.com.instashop.ViewPagerAdapter;
-import ravi.com.instashop.adapter.FragmentTabAdapter;
-import ravi.com.instashop.adapter.SubCategoryAdapter;
-import ravi.com.instashop.fragment.AllSubCatFragment;
 import ravi.com.instashop.interfaces.ApiInterface;
-import ravi.com.instashop.model.PopularModel;
 import ravi.com.instashop.model.SubcatModel;
-import ravi.com.instashop.model.catModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,7 +47,6 @@ public class SubcatActivity extends AppCompatActivity {
 
         viewPager = (ViewPager) findViewById(R.id.viewPager);
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("ALL"));
 
 
         adapter = new ViewPagerAdapter(getSupportFragmentManager(), context, viewPager, tabLayout);
@@ -111,9 +100,9 @@ public class SubcatActivity extends AppCompatActivity {
                 if (response.body().getStatus() == 200) {
 
                     subcatModelscat = response.body().getSub_categories();
-
                     //recycleCategory.setAdapter(new SubCategoryAdapter(SubcatActivity.this,subcatModelscat));
                     for (int i = 0; i<subcatModelscat.size(); i++){
+//                    for (int i =subcatModelscat.size(); i>=0 ;i--){
                         Log.e(TAG, "run: "+"=" + subcatModelscat.get(i).getSub_category_name());
                         addPage(subcatModelscat.get(i).getSub_category_name(),subcatModelscat.get(i).getSub_category_id(),
                                 subcatModelscat.get(i).getCategory_id());

@@ -46,7 +46,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
         Pname=Pname.replace("&amp;","&");
         Log.d("###-->",Pname);
         holder.p_name.setText(Pname);
-        Picasso.with(mContext).load(model.getCategory_photo()).into(holder.p_image);
+        Picasso.with(mContext).load(model.getCategory_photo()).placeholder(R.mipmap.ic_launcher).into(holder.p_image);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override

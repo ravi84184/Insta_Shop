@@ -1,5 +1,6 @@
 package ravi.com.instashop;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,8 +37,7 @@ public class FragmentChild extends Fragment {
     private static final String TAG = "FragmentChild";
 
     List<SubcatItemModel> subcatItemModels = new ArrayList<SubcatItemModel>();
-
-    SubCategoryAdapter subCategoryAdapter;
+    ProgressDialog progressDialog;
     RecyclerView sub_cat_list;
     @Nullable
     @Override
@@ -58,6 +58,7 @@ public class FragmentChild extends Fragment {
     }
 
     private void getIDs(View view) {
+        progressDialog = new ProgressDialog(getContext());
         sub_cat_list = view.findViewById(R.id.sub_cat_list);
 
     }
@@ -70,17 +71,23 @@ public class FragmentChild extends Fragment {
     }
 
     private void SubcatitemLoad() {
+
+        progressDialog.setTitle("Please wait..");
+//        progressDialog.show();
+
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<subcategoryItemResponse> call = apiService.subcategoryitem(sub_cat_id);
         call.enqueue(new Callback<subcategoryItemResponse>() {
             @Override
             public void onResponse(Call<subcategoryItemResponse> call, Response<subcategoryItemResponse> response) {
                 if (response.body().getStatus() == 200) {
+//                    progressDialog.dismiss();
                     subcatItemModels = response.body().getProducts();
                     Log.e(TAG, "onResponse: " +subcatItemModels );
                     sub_cat_list.setAdapter(new SubCategoryAdapter(getActivity(),subcatItemModels));
 
                 } else {
+//                    progressDialog.dismiss();
 
                 }
             }
@@ -89,6 +96,8 @@ public class FragmentChild extends Fragment {
             public void onFailure(Call<subcategoryItemResponse> call, Throwable t) {
                 // Log error here since request failed
                 Log.e(TAG, "Error" + t.toString());
+//                progressDialog.dismiss();
+
             }
         });
     }
