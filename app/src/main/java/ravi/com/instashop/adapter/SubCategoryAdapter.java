@@ -30,8 +30,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     Context mContext;
     List<SubcatItemModel> list;
     List<Integer> item_number_select = new ArrayList<>();
-
-
     public SubCategoryAdapter(Context mContext, List<SubcatItemModel> list) {
         this.mContext = mContext;
         this.list = list;
@@ -47,7 +45,10 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     public void onBindViewHolder(final SubCategoryViewHolder holder, final int position) {
         final SubcatItemModel model = (SubcatItemModel) list.get(position);
 
-        holder.p_name.setText(model.getProduct_name());
+        String Pname=model.getProduct_name();
+        Pname=Pname.replace("&amp;","&");
+        Log.d("###-->",Pname);
+        holder.p_name.setText(Pname);
         Picasso.with(mContext).load(model.getProduct_image()).placeholder(R.mipmap.ic_launcher).into(holder.p_image);
         Log.e(TAG, "onBindViewHolder: " +model.getProduct_image() );
         Log.e(TAG, "onBindViewHolder: " +model.getProduct_name() );

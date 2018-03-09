@@ -73,7 +73,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 //            }
 //        });
 
-        tabItemName.setText(mFragmentTitleList.get(position));
+
+        String Pname=mFragmentTitleList.get(position);
+        Pname=Pname.replace("&amp;","&");
+        Log.d("###-->",Pname);
+        tabItemName.setText(Pname);
         tabItemName.setTextColor(context.getResources().getColor(android.R.color.black));
 
         return view;

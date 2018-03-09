@@ -65,7 +65,8 @@
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:padding="@dimen/_5sdp"/>
             <RelativeLayout
                 android:background="@color/white"
                 android:layout_width="match_parent"

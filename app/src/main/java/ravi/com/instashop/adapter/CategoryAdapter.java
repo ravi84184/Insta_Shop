@@ -3,6 +3,7 @@ package ravi.com.instashop.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +40,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryViewHolder>{
 
     @Override
     public void onBindViewHolder(CategoryViewHolder holder, int position) {
-        final catModel model = (catModel) list.get(position);
 
-        holder.p_name.setText(model.getCategory_name());
+        final catModel model = (catModel) list.get(position);
+        String Pname=model.getCategory_name();
+        Pname=Pname.replace("&amp;","&");
+        Log.d("###-->",Pname);
+        holder.p_name.setText(Pname);
         Picasso.with(mContext).load(model.getCategory_photo()).into(holder.p_image);
 
         holder.setItemClickListener(new ItemClickListener() {
