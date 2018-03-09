@@ -17,6 +17,7 @@ import ravi.com.instashop.R;
 import ravi.com.instashop.activity.SubcatActivity;
 import ravi.com.instashop.interfaces.ItemClickListener;
 import ravi.com.instashop.model.PopularModel;
+import ravi.com.instashop.model.SubcatItemModel;
 import ravi.com.instashop.viewholder.CategoryViewHolder;
 import ravi.com.instashop.viewholder.SubCategoryViewHolder;
 
@@ -27,11 +28,11 @@ import ravi.com.instashop.viewholder.SubCategoryViewHolder;
 public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHolder> {
     private static final String TAG = "SubCategoryAdapter";
     Context mContext;
-    List<PopularModel> list;
+    List<SubcatItemModel> list;
     List<Integer> item_number_select = new ArrayList<>();
 
 
-    public SubCategoryAdapter(Context mContext, List<PopularModel> list) {
+    public SubCategoryAdapter(Context mContext, List<SubcatItemModel> list) {
         this.mContext = mContext;
         this.list = list;
     }
@@ -44,18 +45,18 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
 
     @Override
     public void onBindViewHolder(final SubCategoryViewHolder holder, final int position) {
-        final PopularModel model = (PopularModel) list.get(position);
-        final SubcatActivity cart_show = new SubcatActivity();
-        holder.p_name.setText(model.getLan());
-        Picasso.with(mContext).load(model.getImg()).into(holder.p_image);
+        final SubcatItemModel model = (SubcatItemModel) list.get(position);
+
+        holder.p_name.setText(model.getProduct_name());
+        Picasso.with(mContext).load(model.getProduct_image()).placeholder(R.mipmap.ic_launcher).into(holder.p_image);
+        Log.e(TAG, "onBindViewHolder: " +model.getProduct_image() );
+        Log.e(TAG, "onBindViewHolder: " +model.getProduct_name() );
         item_number_select.add(0);
 
         Log.e(TAG, "onBindViewHolder: " + item_number_select.toString());
-
         holder.p_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 int i = item_number_select.get(position);
                 if (i <= 0) {
                     Log.e(TAG, "onClick: btn_add  if ");

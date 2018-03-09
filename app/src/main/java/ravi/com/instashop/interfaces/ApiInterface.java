@@ -5,6 +5,7 @@ import ravi.com.instashop.ApiResponse.categoryResponse;
 import ravi.com.instashop.ApiResponse.loginResponse;
 import ravi.com.instashop.ApiResponse.msgResponse;
 import ravi.com.instashop.ApiResponse.registerResponse;
+import ravi.com.instashop.ApiResponse.subcategoryItemResponse;
 import ravi.com.instashop.ApiResponse.subcategoryResponse;
 import ravi.com.instashop.ApiResponse.updateProfileReasponse;
 import retrofit2.Call;
@@ -29,6 +30,12 @@ public interface ApiInterface {
     @POST("api.php")
     Call<subcategoryResponse> subcategory
             (@Field("category_id") String category_id);
+
+
+    @FormUrlEncoded
+    @POST("api.php")
+    Call<subcategoryItemResponse> subcategoryitem
+            (@Field("sub_category_id") String sub_category_id);
 
 
     // Method for Register User

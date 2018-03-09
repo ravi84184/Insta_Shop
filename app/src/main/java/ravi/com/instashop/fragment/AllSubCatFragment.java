@@ -32,7 +32,6 @@ public class AllSubCatFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,7 +52,7 @@ public class AllSubCatFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(),2);
         sub_cat_list.setLayoutManager(gridLayoutManager);
         sub_cat_list.setItemAnimator(new DefaultItemAnimator());
-        sub_cat_list.setAdapter(subCategoryAdapter = new SubCategoryAdapter(getContext(),listItemsHorizontal));
+//        sub_cat_list.setAdapter(subCategoryAdapter = new SubCategoryAdapter(getContext(),listItemsHorizontal));
 
     }
 }

@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity
 
 
         recycleCategory = findViewById(R.id.recycleCategory);
+        recycleCategory.setNestedScrollingEnabled(false);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         recycleCategory.setLayoutManager(linearLayoutManager);
 
