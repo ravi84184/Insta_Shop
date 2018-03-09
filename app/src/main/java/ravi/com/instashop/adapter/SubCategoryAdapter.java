@@ -31,8 +31,9 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     Context mContext;
     List<SubcatItemModel> list;
     List<Integer> item_number_select = new ArrayList<>();
-    ArrayList<Integer> product_id = new ArrayList<>();
+    List<String> product_id = new ArrayList<>();
     List<Integer> product_qnty = new ArrayList<>();
+    int pos;
 
 
     public SubCategoryAdapter(Context mContext, List<SubcatItemModel> list) {
@@ -62,20 +63,26 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
         holder.p_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-//                boolean found = Arrays.stream(product_id).anyMatch(x -> x == needle);
-
-                int i = item_number_select.get(position);
-                if (i <= 0) {
-                    Log.e(TAG, "onClick: btn_add  if ");
+                Log.e(TAG, "onClick: " +position );
+                if (!product_id.contains(model.getProduct_id())){
+                    product_id.add(model.getProduct_id());
+                    product_qnty.add(1);
                     holder.rel_add_remove.setVisibility(View.VISIBLE);
-                    i++;
                     holder.add_item.setText("+" + 1);
-                    item_number_select.set(position, i);
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
                 } else {
-                    i++;
-                    item_number_select.set(position, i);
-                    holder.add_item.setText("+" + i);
+                    for (int i=0; i<product_id.size(); i++){
+                        if (product_id.get(i)==model.getProduct_id())
+                        {
+                            pos=i;
+                        }
+                    }
+                    Log.d("Position",String.valueOf(pos));
+                    product_qnty.set(pos,product_qnty.get(pos)+1);
+                    holder.add_item.setText("+" + product_qnty.get(pos));
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
                 }
             }
         });
@@ -83,43 +90,100 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
             @Override
             public void onClick(View v) {
                 Log.e(TAG, "onClick: btn_add");
-                int i = item_number_select.get(position);
-                if (i <= 0) {
-                    Log.e(TAG, "onClick: btn_add  if ");
+                Log.e(TAG, "onClick: " +position );
+                if (!product_id.contains(model.getProduct_id())){
+                    product_id.add(model.getProduct_id());
+                    product_qnty.add(1);
                     holder.rel_add_remove.setVisibility(View.VISIBLE);
-                    i++;
                     holder.add_item.setText("+" + 1);
-                    item_number_select.set(position, i);
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
                 } else {
-                    i++;
-                    item_number_select.set(position, i);
-                    holder.add_item.setText("+" + i);
+                    for (int i=0; i<product_id.size(); i++){
+                        if (product_id.get(i)==model.getProduct_id())
+                        {
+                            pos=i;
+                        }
+                    }
+                    Log.d("Position",String.valueOf(pos));
+                    product_qnty.set(pos,product_qnty.get(pos)+1);
+                    holder.add_item.setText("+" + product_qnty.get(pos));
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
                 }
             }
         });
         holder.add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int i = item_number_select.get(position);
-                Log.e(TAG, "onClick: add_item");
-                i++;
-                item_number_select.set(position, i);
-                holder.add_item.setText("+" + i);
+                Log.e(TAG, "onClick: " +position );
+                if (!product_id.contains(model.getProduct_id())){
+                    product_id.add(model.getProduct_id());
+                    product_qnty.add(1);
+                    holder.rel_add_remove.setVisibility(View.VISIBLE);
+                    holder.add_item.setText("+" + 1);
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
+                } else {
+                    for (int i=0; i<product_id.size(); i++){
+                        if (product_id.get(i)==model.getProduct_id())
+                        {
+                            pos=i;
+                        }
+                    }
+                    Log.d("Position",String.valueOf(pos));
+                    product_qnty.set(pos,product_qnty.get(pos)+1);
+                    holder.add_item.setText("+" + product_qnty.get(pos));
+                    Log.e(TAG, "onClick: " +product_id.toString());
+                    Log.e(TAG, "onClick: " +product_qnty.toString());
+                }
             }
         });
         holder.remove_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: remove_item");
-                int i = item_number_select.get(position);
-                i--;
-                if (i <= 0) {
-                    item_number_select.set(position, 0);
-                    holder.rel_add_remove.setVisibility(View.INVISIBLE);
+
+                Log.e(TAG, "onClick: " +position );
+                if (!product_id.contains(model.getProduct_id())){
+//                    product_id.add(model.getProduct_id());
+//                    product_qnty.add(1);
+//                    holder.rel_add_remove.setVisibility(View.VISIBLE);
+//                    holder.add_item.setText("+" + 1);
+//                    Log.e(TAG, "onClick: " +product_id.toString());
+//                    Log.e(TAG, "onClick: " +product_qnty.toString());
                 } else {
-                    holder.add_item.setText("+" + i);
-                    item_number_select.set(position, i);
+                    for (int i=0; i<product_id.size(); i++){
+                        if (product_id.get(i)==model.getProduct_id())
+                        {
+                            pos=i;
+                        }
+                    }
+
+                    int q = product_qnty.get(pos);
+                    Log.e(TAG, "onClick: q !!!!! " + q);
+                    if (q > 1){
+                        product_qnty.set(pos,product_qnty.get(pos)-1);
+                        holder.add_item.setText("+" + product_qnty.get(pos));
+                        Log.e(TAG, "onClick: " +product_id.toString());
+                        Log.e(TAG, "onClick: " +product_qnty.toString());
+                    } else {
+                        product_id.remove(pos);
+                        product_qnty.remove(pos);
+                        holder.rel_add_remove.setVisibility(View.INVISIBLE);
+                        Log.e(TAG, "onClick: " +product_id.toString());
+                        Log.e(TAG, "onClick: " +product_qnty.toString());
+                    }
                 }
+//                Log.e(TAG, "onClick: remove_item");
+//                int i = item_number_select.get(position);
+//                i--;
+//                if (i <= 0) {
+//                    item_number_select.set(position, 0);
+//                    holder.rel_add_remove.setVisibility(View.INVISIBLE);
+//                } else {
+//                    holder.add_item.setText("+" + i);
+//                    item_number_select.set(position, i);
+//                }
             }
         });
 
