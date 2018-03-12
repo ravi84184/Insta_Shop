@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -50,7 +51,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     @Override
     public void onBindViewHolder(final SubCategoryViewHolder holder, final int position) {
         final SubcatItemModel model = (SubcatItemModel) list.get(position);
-
         holder.p_name.setText(model.getProduct_name());
         holder.p_price.setText(model.getMrpPrice());
         holder.p_weight.setText(model.getWeightSize());
@@ -91,10 +91,11 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
             public void onClick(View v) {
                 Log.e(TAG, "onClick: btn_add");
                 Log.e(TAG, "onClick: " +position );
+
                 if (!product_id.contains(model.getProduct_id())){
                     product_id.add(model.getProduct_id());
                     product_qnty.add(1);
-                    holder.rel_add_remove.setVisibility(View.VISIBLE);
+                    ((SubcatActivity) mContext).updateItemCount(true);
                     holder.add_item.setText("+" + 1);
                     Log.e(TAG, "onClick: " +product_id.toString());
                     Log.e(TAG, "onClick: " +product_qnty.toString());

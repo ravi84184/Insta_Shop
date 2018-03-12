@@ -11,10 +11,6 @@ import ravi.com.instashop.model.catModel;
  */
 
 public class categoryResponse {
-
-
-
-
     @SerializedName("status")
     private int status;
     @SerializedName("categories")

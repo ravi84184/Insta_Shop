@@ -6,6 +6,9 @@
 
     <string name="action_settings">Settings</string>
 
+    <string name="offer_banner">"Shop for 2000 to get Rs 100 discount and shop for 3000 to get Rs 200 discount"</string>
+    <string name="checkout">CheckOut</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="suggest_product">Yoy may suggest a producy to be added to our assortment.depending on the Shops stock availability.we will add it.</string>

@@ -28,4 +28,6 @@
     <color name="green">#00c123</color>
     <color name="green_dark">#27a33d</color>
 
+    <color name="holo_green_dark">#ff669900</color>
+
 </resources>
