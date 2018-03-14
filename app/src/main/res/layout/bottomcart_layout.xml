@@ -39,7 +39,7 @@
         android:text="@string/offer_banner"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:visibility="gone"></TextView>
+        android:visibility="gone"/>
 
     <RelativeLayout
         android:id="@+id/checkout_item_root"

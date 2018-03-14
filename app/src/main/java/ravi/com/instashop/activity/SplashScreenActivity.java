@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import ravi.com.instashop.DatabseHelper.ExampleDBHelper;
 import ravi.com.instashop.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -29,7 +30,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         }, SPLASH_TIME_OUT);
     }
     private void callActivity() {
-
             startActivity(new Intent(SplashScreenActivity.this,IntroActivity.class));
             finish();
 
