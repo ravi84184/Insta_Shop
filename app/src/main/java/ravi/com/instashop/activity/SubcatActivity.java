@@ -1,8 +1,6 @@
 package ravi.com.instashop.activity;
 
 import android.content.Context;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -10,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -20,7 +17,6 @@ import java.util.List;
 
 import ravi.com.instashop.ApiManager.ApiClient;
 import ravi.com.instashop.ApiResponse.subcategoryResponse;
-import ravi.com.instashop.DatabseHelper.DatabaseHelper;
 import ravi.com.instashop.FragmentChild;
 import ravi.com.instashop.R;
 import ravi.com.instashop.ViewPagerAdapter;
@@ -36,12 +32,13 @@ public class SubcatActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private static final String TAG = "SubcatActivity";
-    private int itemCount = 0;
+    private static int itemCount = 0;
 
     List<SubcatModel> subcatModelscat = new ArrayList<SubcatModel>();
     private ViewPagerAdapter adapter;
 
-    private TextView checkOutAmount, itemCountTextView;
+    private TextView checkOutAmount;
+    private static TextView itemCountTextView;
     private TextView offerBanner;
 
     private BigDecimal checkoutAmount = new BigDecimal(BigInteger.ZERO);
@@ -107,7 +104,7 @@ public class SubcatActivity extends AppCompatActivity {
         SubcatLoad();
     }
 
-    public void updateItemCount(boolean ifIncrement) {
+    public  void updateItemCount(boolean ifIncrement) {
         if (ifIncrement) {
             itemCount++;
             itemCountTextView.setText(String.valueOf(itemCount));

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
@@ -52,6 +52,36 @@
                         android:paddingLeft="@dimen/_5sdp"
                         android:text="Product Name" />
 
+                    <LinearLayout
+                        android:id="@+id/rel_add_remove"
+                        android:weightSum="3"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                      <Button
+                          android:id="@+id/btn_remove"
+                          android:layout_weight="0.7"
+                          android:layout_width="0dp"
+                          android:layout_height="match_parent"
+                          android:text="-"/>
+
+                        <TextView
+                            android:id="@+id/productQnty"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.6"
+                            android:gravity="center"
+                            android:text="0"
+                            android:background="@color/white"
+                            android:textSize="@dimen/_12ssp" />
+                        <Button
+                            android:id="@+id/btn_add"
+                            android:layout_weight="0.7"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:text="+"/>
+                    </LinearLayout>
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -66,68 +96,9 @@
                             android:text="INR 100"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
-
-                        <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:padding="@dimen/_5sdp"-->
-                        <!--android:text="ADD"-->
-                        <!--android:textColor="@color/green"-->
-                        <!--android:textStyle="bold" />-->
-
-                        <TextView
-                            android:id="@+id/btn_add"
-                            android:layout_alignParentRight="true"
-                            android:text="ADD"
-                            android:clickable="true"
-                            android:layout_margin="@dimen/_3sdp"
-                            android:padding="@dimen/_5sdp"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_13ssp"
-                            android:textColor="@color/green_dark"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
                     </RelativeLayout>
-
                 </LinearLayout>
             </LinearLayout>
-            <RelativeLayout
-                android:visibility="invisible"
-                android:id="@+id/rel_add_remove"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_2sdp"
-                android:layout_marginRight="@dimen/_2sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/remove_item"
-                    android:background="@drawable/small_btn_curved_primary"
-                    android:text="-"
-                    android:textSize="@dimen/_25ssp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_marginStart="@dimen/_3sdp"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="@dimen/_3sdp" />
-                <TextView
-                    android:id="@+id/add_item"
-                    android:background="@drawable/small_btn_curved_green"
-                    android:text="+2"
-                    android:layout_alignParentRight="true"
-                    android:textSize="@dimen/_15ssp"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="@dimen/_3sdp"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/_3sdp" />
-            </RelativeLayout>
         </FrameLayout>
     </android.support.v7.widget.CardView>
 </LinearLayout>

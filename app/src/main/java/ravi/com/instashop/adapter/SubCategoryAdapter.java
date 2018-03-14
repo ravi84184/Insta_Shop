@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import ravi.com.instashop.DatabseHelper.ExampleDBHelper;
 import ravi.com.instashop.R;
 import ravi.com.instashop.activity.SubcatActivity;
 import ravi.com.instashop.interfaces.ItemClickListener;
@@ -34,8 +35,10 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
     List<Integer> item_number_select = new ArrayList<>();
     List<String> product_id = new ArrayList<>();
     List<Integer> product_qnty = new ArrayList<>();
-    int pos;
+    ExampleDBHelper dbHelper;
 
+
+    int pos;
 
     public SubCategoryAdapter(Context mContext, List<SubcatItemModel> list) {
         this.mContext = mContext;
@@ -55,69 +58,67 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
         holder.p_price.setText(model.getMrpPrice());
         holder.p_weight.setText(model.getWeightSize());
         Picasso.with(mContext).load(model.getProduct_image()).placeholder(R.mipmap.ic_launcher).into(holder.p_image);
-        Log.e(TAG, "onBindViewHolder: " +model.getProduct_image() );
-        Log.e(TAG, "onBindViewHolder: " +model.getProduct_name() );
+        Log.e(TAG, "onBindViewHolder: " + model.getProduct_image());
+        Log.e(TAG, "onBindViewHolder: " + model.getProduct_name());
         item_number_select.add(0);
 
         Log.e(TAG, "onBindViewHolder: " + item_number_select.toString());
         holder.p_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: " +position );
-                if (!product_id.contains(model.getProduct_id())){
-                    product_id.add(model.getProduct_id());
-                    product_qnty.add(1);
-                    holder.rel_add_remove.setVisibility(View.VISIBLE);
-                    holder.add_item.setText("+" + 1);
-                    Log.e(TAG, "onClick: " +product_id.toString());
-                    Log.e(TAG, "onClick: " +product_qnty.toString());
-                } else {
-                    for (int i=0; i<product_id.size(); i++){
-                        if (product_id.get(i)==model.getProduct_id())
-                        {
-                            pos=i;
-                        }
-                    }
-                    Log.d("Position",String.valueOf(pos));
-                    product_qnty.set(pos,product_qnty.get(pos)+1);
-                    holder.add_item.setText("+" + product_qnty.get(pos));
-                    Log.e(TAG, "onClick: " +product_id.toString());
-                    Log.e(TAG, "onClick: " +product_qnty.toString());
-                }
+                Log.e(TAG, "onClick: " + position);
             }
+        });
+        holder.btn_remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int p=dbHelper.deleteFromCart(model.getProduct_id());
+
+                if (p==200)
+                {
+                    holder.p_qnty.setText(String.valueOf(0));
+                    Log.d("-->",String.valueOf(0));
+                }
+                else {
+                    holder.p_qnty.setText(String.valueOf(p));
+                    Log.d("-->",String.valueOf(p));
+
+                }
+              }
         });
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.e(TAG, "onClick: btn_add");
-                Log.e(TAG, "onClick: " +position );
+                Log.e(TAG, "onClick: " + position);
 
-                if (!product_id.contains(model.getProduct_id())){
-                    product_id.add(model.getProduct_id());
-                    product_qnty.add(1);
+                //delete for 1,update for >=2,insert 0,error 200
+
+                Log.d("-->",model.getProduct_id());
+                Log.d("-->",model.getMrpPrice());
+                dbHelper = new ExampleDBHelper(mContext);
+                int i = dbHelper.insertCart(model.getProduct_id(), model.getMrpPrice(),1);
+                Log.d("-->", String.valueOf(i));
+                if (i == 0) {
                     ((SubcatActivity) mContext).updateItemCount(true);
-                    holder.add_item.setText("+" + 1);
-                    Log.e(TAG, "onClick: " +product_id.toString());
-                    Log.e(TAG, "onClick: " +product_qnty.toString());
+                    holder.p_qnty.setText("1");
+                } else if (i > 1) {
+                    ((SubcatActivity) mContext).updateItemCount(true);
+                    holder.p_qnty.setText(String.valueOf(i));
+                } else if (i == 1) {
+                    ((SubcatActivity) mContext).updateItemCount(false);
+                    holder.p_qnty.setText("0");
+
                 } else {
-                    for (int i=0; i<product_id.size(); i++){
-                        if (product_id.get(i)==model.getProduct_id())
-                        {
-                            pos=i;
-                        }
-                    }
-                    Log.d("Position",String.valueOf(pos));
-                    product_qnty.set(pos,product_qnty.get(pos)+1);
-                    holder.add_item.setText("+" + product_qnty.get(pos));
-                    Log.e(TAG, "onClick: " +product_id.toString());
-                    Log.e(TAG, "onClick: " +product_qnty.toString());
+                    Log.d("###","Something wrong..");
                 }
             }
         });
-        holder.add_item.setOnClickListener(new View.OnClickListener() {
+
+       /* holder.add_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(TAG, "onClick: " +position );
+            *//*    Log.e(TAG, "onClick: " +position );
                 if (!product_id.contains(model.getProduct_id())){
                     product_id.add(model.getProduct_id());
                     product_qnty.add(1);
@@ -137,14 +138,14 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
                     holder.add_item.setText("+" + product_qnty.get(pos));
                     Log.e(TAG, "onClick: " +product_id.toString());
                     Log.e(TAG, "onClick: " +product_qnty.toString());
-                }
+                }*//*
             }
         });
         holder.remove_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.e(TAG, "onClick: " +position );
+               *//* Log.e(TAG, "onClick: " +position );
                 if (!product_id.contains(model.getProduct_id())){
 //                    product_id.add(model.getProduct_id());
 //                    product_qnty.add(1);
@@ -174,7 +175,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
                         Log.e(TAG, "onClick: " +product_id.toString());
                         Log.e(TAG, "onClick: " +product_qnty.toString());
                     }
-                }
+                }*//*
 //                Log.e(TAG, "onClick: remove_item");
 //                int i = item_number_select.get(position);
 //                i--;
@@ -187,7 +188,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
 //                }
             }
         });
-
+*/
 //        holder.setItemClickListener(new ItemClickListener() {
 //            @Override
 //            public void onClick(View view, int position, boolean isLongClick) {
@@ -287,7 +288,6 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
 ////            }
 ////        });
 //    }
-
 
 
     @Override
