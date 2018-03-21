@@ -109,10 +109,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryViewHold
                 }
             }
         });
-
     }
-
-
     @Override
     public int getItemCount() {
         return list.size();

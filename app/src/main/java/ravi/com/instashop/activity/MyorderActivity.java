@@ -1,5 +1,6 @@
 package ravi.com.instashop.activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
@@ -18,6 +21,7 @@ import ravi.com.instashop.R;
 import ravi.com.instashop.adapter.CartProductAdapter;
 import ravi.com.instashop.model.CartProductModel;
 import ravi.com.instashop.model.Money;
+import ravi.com.instashop.utils.PreferenceManager;
 
 public class MyorderActivity extends AppCompatActivity {
     private static final String TAG = "MyorderActivity";
@@ -26,21 +30,51 @@ public class MyorderActivity extends AppCompatActivity {
     List<CartProductModel> arrayList = new ArrayList<>();
     RecyclerView cart_list;
     TextView totalAmount;
+    Button btn_order;
+    private PreferenceManager preferenceManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myorder);
-        myDB = new ExampleDBHelper(this);
+        preferenceManager = new PreferenceManager(this); // Initialized Shared Preference
 
+        myDB = new ExampleDBHelper(this);
+        btn_order = findViewById(R.id.btn_order);
         totalAmount = findViewById(R.id.totalAmount);
         cart_list = findViewById(R.id.cart_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         cart_list.setLayoutManager(layoutManager);
         cart_list.setItemAnimator(new DefaultItemAnimator());
+        ButtonClick();
         ProductList();
         updateItemCount(false);
     }
+
+    private void ButtonClick() {
+        btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                checkUserSignIN();
+            }
+        });
+    }
+
+    private void checkUserSignIN() {
+        String id = preferenceManager.getRegisteredUserId();
+        if (!id.equals("")) {
+            startActivity(new Intent(MyorderActivity.this, MainActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out);
+            finish();
+        } else {
+            startActivity(new Intent(MyorderActivity.this, LoginActivity.class));
+            overridePendingTransition(R.anim.slide_in_right, R.anim.fade_out);
+            finish();
+        }
+//        preferenceManager.setKeyValue("mobile", );
+
+    }
+
     public  void updateItemCount(boolean ifIncrement) {
         int total = myDB.totleamount();
         Log.e(TAG, "updateItemCount: total " +total );

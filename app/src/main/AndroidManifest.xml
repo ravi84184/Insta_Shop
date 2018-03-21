@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ravi.com.instashop">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -23,26 +23,30 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ContactUsActivity"
+        <activity
+            android:name=".activity.ContactUsActivity"
             android:label="ContactUs">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.SuggestProductActivity"
+        <activity
+            android:name=".activity.SuggestProductActivity"
             android:label="Suggest Product">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.MyAccount"
+        <activity
+            android:name=".activity.MyAccount"
             android:label="My Account">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".activity.IntroActivity"
-            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
+            android:name=".activity.IntroActivity"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".activity.SubcatActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -53,6 +57,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.MainActivity" />
         </activity>
+        <activity android:name=".activity.LoginActivity"></activity>
     </application>
 
 </manifest>
